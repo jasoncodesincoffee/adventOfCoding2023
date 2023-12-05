@@ -60,6 +60,8 @@ for line in lines:
             if idx < l_position:
                 first_number = ele
                 l_position = idx
+        idx = line.rfind(ele)
+        if idx != -1:
             if idx > h_position:
                 last_number = ele
                 h_position = idx
@@ -81,7 +83,7 @@ for line in lines:
         is_num = False
 
     if is_num:
-        last_digit = last_number
+        second_digit = last_number
     else:
         second_digit = strToNum(last_number)
         is_num = True
@@ -90,4 +92,4 @@ for line in lines:
     num_list_final.append(int(combined_num))
 
 answer2 = sum(num_list_final)
-print(f'the answer for part 1 is: {answer2}')
+print(f'the answer for part 2 is: {answer2}')
