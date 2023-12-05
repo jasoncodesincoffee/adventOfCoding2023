@@ -33,6 +33,8 @@ def sum_of_games(lines):
     last_num = int(game_num)
     return first_num, last_num
 
+
+##### THIS IS PART 1 #########
 for line in lines:
     current_set.clear()
     line = line.rstrip("\n")
@@ -58,3 +60,30 @@ first_num, last_num = sum_of_games(lines)
 total_game_sum = len(lines)*(first_num + last_num)/2
 possible_list_total = total_game_sum - sum(the_impossible_list)
 print(int(possible_list_total))
+
+### THIS IS PART 2 #################
+list_of_powers = []
+for line in lines:
+    red = 0
+    green = 0
+    blue = 0
+    line = line.rstrip("\n")
+    game_info = line.split(":")
+    game_num = game_info[0].split(" ")[1]
+    game_set = game_info[1].split(";")
+    for set in game_set:
+        current_set.clear()
+        each_cube_set = set.split(",")
+        cubes(each_cube_set)
+        if "blue" in current_set:
+            if current_set['blue'] > blue:
+                blue = current_set['blue']
+        if "green" in current_set:
+            if current_set['green'] > green:
+                green = current_set['green']
+        if "red" in current_set:
+            if current_set['red'] > red:
+                red = current_set['red']
+    list_of_powers.append(red*blue*green)
+
+print(sum(list_of_powers))
