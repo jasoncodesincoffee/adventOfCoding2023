@@ -17,8 +17,6 @@ for count_row, row in enumerate(rows):
         if not column.isalnum() and column != '.':
             for y in search_window:
                 for x in search_window:
-                    if x==1 and y==0 and count_row == 3:
-                        print("pause")
                     try:
                         int(rows[count_row+y][idx+x])
                         is_num = True
